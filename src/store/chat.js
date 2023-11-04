@@ -15,8 +15,6 @@ export const useChatStore = defineStore('chats', () => {
         addDoc(collection(db, "chats"), {
            text: newMessage.value,
            userName: userName.value,
-           likes: likes.value,
-           reply: reply.value
           })
           newMessage.value = ''
     }
@@ -34,8 +32,6 @@ export const useChatStore = defineStore('chats', () => {
                 id: doc.id,
                 text: doc.data().text,
                 userName: doc.data().userName,
-                likes: doc.data().likes,
-                reply: doc.data().reply
               }
               dbChats.push(chat)
             })

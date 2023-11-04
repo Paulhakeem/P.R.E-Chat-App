@@ -41,7 +41,7 @@ const toggleModal = () => {
             @click="chats.like"
             :icon="['fas', 'thumbs-up']" class="pt-1" />
             <p class="first-letter:uppercase tezt-sm font-light">
-              {{ message.likes }} likes
+              {{ chats.likes }} likes
             </p>
           </div>
           <div class="flex gap-2 cursor-pointer">
@@ -79,27 +79,42 @@ const toggleModal = () => {
     </NewMessage>
 
     <footer class="p-4 flex gap-4 justify-between bg-[#1b1b1b]">
-      <font-awesome-icon
+        <div class="text-center">
+            <font-awesome-icon
         :icon="['fas', 'phone']"
-        class="text-primary text-4xl cursor-pointer"
+        class="text-primary text-xl cursor-pointer"
       />
-      <font-awesome-icon
+      <p class="text-primary text-sm">Calls</p>
+        </div>
+     <div class="text-center">
+        <font-awesome-icon
         :icon="['fas', 'shield']"
-        class="text-primary text-4xl cursor-pointer"
+        class="text-primary text-xl cursor-pointer"
       />
-      <font-awesome-icon
+      <p class="text-primary text-sm">Achive</p>
+     </div>
+      <div>
+        <font-awesome-icon
         :icon="['fas', 'circle-plus']"
         @click="toggleModal"
         class="text-secondary text-4xl cursor-pointer"
       />
-      <font-awesome-icon
+      </div>
+      <div class="text-center">
+        <font-awesome-icon
         :icon="['fab', 'rocketchat']"
-        class="text-primary text-4xl cursor-pointer"
+        class="text-primary text-xl cursor-pointer"
       />
-      <font-awesome-icon
+      <p class="text-primary text-sm">Chats</p>
+      </div>
+     <div class="text-center">
+        <font-awesome-icon
         :icon="['fas', 'gear']"
-        class="text-primary text-4xl cursor-pointer"
+        class="text-primary text-xl cursor-pointer"
       />
+      <p class="text-primary text-sm">Settings</p>
+     </div>
+      
     </footer>
   </div>
 </template>
