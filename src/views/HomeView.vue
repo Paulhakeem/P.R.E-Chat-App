@@ -1,8 +1,10 @@
 <script setup>
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
+import { useChatStore } from "../store/chat.js"
 
-const userName = ref('Paul');
+const chats = useChatStore()
+
 </script>
 
 <template>
@@ -14,7 +16,7 @@ const userName = ref('Paul');
       <h2 class="text-primary text-xl">Enter your user name</h2>
       <div class="mx-4 my-2">
         <input
-          v-model="userName"
+          v-model="chats.userName"
           type="text"
           class="outline-none focus:ring-0 w-full bg-[#000] border border-1 border-primary rounded-md text-primary p-2"
         />
