@@ -8,6 +8,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
+    },
+    {
+      path: '/chats',
+      name: 'chatroom',
+      component: () => import('../views/ChatRoom.vue')
     }
   ]
 })
