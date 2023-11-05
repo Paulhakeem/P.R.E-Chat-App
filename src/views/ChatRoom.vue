@@ -27,30 +27,34 @@ const toggleModal = () => {
         class="text-primary text-xl cursor-pointer"
       />
     </div>
-    <main v-for="message in chats.messages" class="my-6 text-left mx-2">
-      <div
-        class="bg-secondary w-auto h-auto p-2 rounded-tl-xl rounded-tr-lg rounded-br-lg"
-      >
-        <h1 class="font-semibold first-letter:uppercase mb-2">
-          {{ message.userName }}
-        </h1>
-        <p class="first-letter:uppercase">{{ message.text }}</p>
-        <div class="flex justify-between mx-2 pt-4">
-          <div class="flex gap-2 cursor-pointer">
-            <font-awesome-icon
-            @click="chats.like"
-            :icon="['fas', 'thumbs-up']" class="pt-1" />
-            <p class="first-letter:uppercase tezt-sm font-light">
-              {{ chats.likes }} likes
-            </p>
-          </div>
-          <div class="flex gap-2 cursor-pointer">
-            <font-awesome-icon :icon="['fas', 'comment']" class="pt-1" />
-            <p class="first-letter:uppercase text-sm font-light">reply</p>
+    <div v-auto-animate>
+      <main v-for="message in chats.messages" :key="message.id" class="my-6 text-left mx-2">
+        <div
+          class="bg-secondary w-auto h-auto p-2 rounded-tl-xl rounded-tr-lg rounded-br-lg"
+        >
+          <h1 class="font-semibold first-letter:uppercase mb-2">
+            {{ message.userName }}
+          </h1>
+          <p class="first-letter:uppercase">{{ message.text }}</p>
+          <div class="flex justify-between mx-2 pt-4">
+            <div class="flex gap-2 cursor-pointer">
+              <font-awesome-icon
+                @click="chats.like"
+                :icon="['fas', 'thumbs-up']"
+                class="pt-1"
+              />
+              <p class="first-letter:uppercase tezt-sm font-light">
+                {{ chats.likes }} likes
+              </p>
+            </div>
+            <div class="flex gap-2 cursor-pointer">
+              <font-awesome-icon :icon="['fas', 'comment']" class="pt-1" />
+              <p class="first-letter:uppercase text-sm font-light">reply</p>
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
 
     <NewMessage :modalActive="modalActive" @close-modal="toggleModal">
       <h1
@@ -79,42 +83,41 @@ const toggleModal = () => {
     </NewMessage>
 
     <footer class="p-4 flex gap-4 justify-between bg-[#1b1b1b]">
-        <div class="text-center">
-            <font-awesome-icon
-        :icon="['fas', 'phone']"
-        class="text-primary text-xl cursor-pointer"
-      />
-      <p class="text-primary text-sm">Calls</p>
-        </div>
-     <div class="text-center">
+      <div class="text-center">
         <font-awesome-icon
-        :icon="['fas', 'shield']"
-        class="text-primary text-xl cursor-pointer"
-      />
-      <p class="text-primary text-sm">Achive</p>
-     </div>
-      <div>
-        <font-awesome-icon
-        :icon="['fas', 'circle-plus']"
-        @click="toggleModal"
-        class="text-secondary text-4xl cursor-pointer"
-      />
+          :icon="['fas', 'phone']"
+          class="text-primary text-xl cursor-pointer"
+        />
+        <p class="text-primary text-sm">Calls</p>
       </div>
       <div class="text-center">
         <font-awesome-icon
-        :icon="['fab', 'rocketchat']"
-        class="text-primary text-xl cursor-pointer"
-      />
-      <p class="text-primary text-sm">Chats</p>
+          :icon="['fas', 'shield']"
+          class="text-primary text-xl cursor-pointer"
+        />
+        <p class="text-primary text-sm">Achive</p>
       </div>
-     <div class="text-center">
+      <div>
         <font-awesome-icon
-        :icon="['fas', 'gear']"
-        class="text-primary text-xl cursor-pointer"
-      />
-      <p class="text-primary text-sm">Settings</p>
-     </div>
-      
+          :icon="['fas', 'circle-plus']"
+          @click="toggleModal"
+          class="text-secondary text-4xl cursor-pointer"
+        />
+      </div>
+      <div class="text-center">
+        <font-awesome-icon
+          :icon="['fab', 'rocketchat']"
+          class="text-primary text-xl cursor-pointer"
+        />
+        <p class="text-primary text-sm"> <span class="text-secondary">{{ chats.messages.length }}</span> Chats</p>
+      </div>
+      <div class="text-center">
+        <font-awesome-icon
+          :icon="['fas', 'gear']"
+          class="text-primary text-xl cursor-pointer"
+        />
+        <p class="text-primary text-sm">Settings</p>
+      </div>
     </footer>
   </div>
 </template>

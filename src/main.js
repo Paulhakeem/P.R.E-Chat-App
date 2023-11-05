@@ -3,6 +3,7 @@ import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 
 
 
@@ -17,6 +18,8 @@ library.add(fab, fas, far)
 
 const pinia = createPinia()
 const app = createApp(App)
+
+app.use(autoAnimatePlugin)
 
 app.component('font-awesome-icon', FontAwesomeIcon)
 
