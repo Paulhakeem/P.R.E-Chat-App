@@ -12,7 +12,7 @@ export const useChatStore = defineStore("chats", () => {
   const messages = ref([]);
 
   const addMessage = () => {
-    addDoc(collection(db, "chats", userId), {
+    addDoc(collection(db, "chats"), {
       text: newMessage.value,
       userName: userName.value,
     });
