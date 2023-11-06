@@ -2,8 +2,11 @@
 import { ref } from "vue";
 import NewMessage from "../components/NewMessage.vue";
 import { useChatStore } from "../store/chat.js";
+// import {useUserStore} from "../store/user.js"
+
 
 const chats = useChatStore();
+// const user = useUserStore()
 
 const modalActive = ref(null);
 const toggleModal = () => {
@@ -28,15 +31,26 @@ const toggleModal = () => {
       />
     </div>
     <div v-auto-animate>
-      <main v-for="message in chats.messages" :key="message.id" class="my-6 text-left mx-2">
+      <main
+        v-for="message in chats.messages"
+        :key="message.id"
+        class="my-6 text-left mx-2"
+      >
         <div
           class="bg-secondary w-auto h-auto p-2 rounded-tl-xl rounded-tr-lg rounded-br-lg"
         >
-          <h1 class="font-semibold first-letter:uppercase mb-2">
+        <div class="flex gap-4">
+          <img src="../assets/avatar.jpg" alt="" class="w-12 h-12 rounded-full">
+          <div>
+            <h1 class="font-semibold first-letter:uppercase">
             {{ message.userName }}
           </h1>
           <p class="first-letter:uppercase">{{ message.text }}</p>
-          <div class="flex justify-between mx-2 pt-4">
+          </div>
+         
+        </div>
+        
+          <div class="flex justify-between mx-6 pt-4">
             <div class="flex gap-2 cursor-pointer">
               <font-awesome-icon
                 @click="chats.like"
@@ -58,12 +72,12 @@ const toggleModal = () => {
 
     <NewMessage :modalActive="modalActive" @close-modal="toggleModal">
       <h1
-        class="text-center first-letter:uppercase text-xl text-[#000] tracking-wide"
+        class="font-semibold text-center first-letter:uppercase text-xl text-[#000] tracking-wide"
       >
         start new chat
       </h1>
       <form @submit.prevent="chats.addMessage" class="mx-2 my-10">
-        <label for="message" class="text-primary first-letter:uppercase"
+        <label for="message" class="first-letter:uppercase"
           >write your message</label
         >
         <div class="flex gap-4 mb-4">
@@ -109,7 +123,9 @@ const toggleModal = () => {
           :icon="['fab', 'rocketchat']"
           class="text-primary text-xl cursor-pointer"
         />
-        <p class="text-primary text-sm"> <span class="text-secondary">{{ chats.messages.length }}</span> Chats</p>
+        <p class="text-primary text-sm">
+          <span class="text-secondary">{{ chats.messages.length }}</span> Chats
+        </p>
       </div>
       <div class="text-center">
         <font-awesome-icon

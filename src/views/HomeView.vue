@@ -5,6 +5,7 @@ import { useChatStore } from "../store/chat.js"
 
 const chats = useChatStore()
 
+
 </script>
 
 <template>
@@ -13,6 +14,7 @@ const chats = useChatStore()
   >
     <h1 class="text-secondary font-medium text-2xl mt-8">P.R.E Chat App</h1>
     <form class="text-center my-8">
+     
       <h2 class="text-primary text-xl">Enter your user name</h2>
       <div class="mx-4 my-2">
         <input
@@ -23,7 +25,7 @@ const chats = useChatStore()
       </div>
       <div class="mx-4 my-4">
         <RouterLink to='/chats'>
-          <button 
+          <button
           class="uppercase text-xl bg-secondary text-primary w-full p-2 font-semibold"
         >
           save
