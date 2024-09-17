@@ -10,12 +10,12 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      meta: {requiresAuth: true},
     },
     {
       path: '/chats',
       name: 'chatroom',
-      component: () => import('../views/ChatRoom.vue')
+      component: () => import('../views/ChatRoom.vue'),
+      meta: {requiresAuth: true}
     },
     {
       path: '/account',

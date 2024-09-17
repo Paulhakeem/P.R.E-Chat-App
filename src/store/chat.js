@@ -1,15 +1,13 @@
 import { defineStore } from "pinia";
 import { ref, onMounted, watchEffect } from "vue";
-import { db } from "../firebase/fbConfig";
-import { collection, addDoc, onSnapshot, updateDoc } from "firebase/firestore";
+import { db } from "../firebase/fbConfig"
+import { collection, addDoc, onSnapshot } from "firebase/firestore";
 
 export const useChatStore = defineStore("chats", () => {
   const isOnline = ref(false);
   const newMessage = ref(null);
-  const userName = ref(null);
-  const likes = ref(0);
-  const reply = ref(null);
   const messages = ref([]);
+
 
   const addMessage = () => {
     addDoc(collection(db, "chats"), {
@@ -19,9 +17,7 @@ export const useChatStore = defineStore("chats", () => {
     newMessage.value = "";
   };
 
-  const like = () => {
-    likes.value++;
-  };
+ 
 
   onMounted(() => {
     onSnapshot(collection(db, "chats"), (querySnapshot) => {
